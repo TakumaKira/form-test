@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import Frame from '../common/Frame';
 import cls from './index.module.scss';
 
-const DataGrid = (): JSX.Element => {
+const DataGridMUI = (): JSX.Element => {
   return (
     <Frame title="<data-gird> UI: MUI">
       <Typography variant="body2">
@@ -13,4 +13,4 @@ const DataGrid = (): JSX.Element => {
   );
 }
 
-export default DataGrid;
+export default DataGridMUI;

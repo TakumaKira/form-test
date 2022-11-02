@@ -1,10 +1,10 @@
 import Typography from '@mui/material/Typography';
 
-import Formik from './Formik';
+import FormikCompMUI from './FormikCompMUI';
 import FormikMUI from './FormikMUI';
 import ReactHookFormMUI from './ReactHookFormMUI';
 import ReactFinalFormMUI from './ReactFinalFormMUI';
-import DataGrid from './DataGrid';
+import DataGridMUI from './DataGridMUI';
 
 import cls from './App.module.scss';
 
@@ -15,12 +15,12 @@ const App = (): JSX.Element => {
         form + data-grid 実装テスト
       </Typography>
 
-      <Formik />
+      <FormikCompMUI />
       <FormikMUI />
       <ReactHookFormMUI />
       <ReactFinalFormMUI />
 
-      <DataGrid />
+      <DataGridMUI />
     </div>
   );
 }
