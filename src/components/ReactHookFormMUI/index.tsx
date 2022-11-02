@@ -1,5 +1,6 @@
 import Input from '@mui/material/Input';
-import Select from 'react-select';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 
 import Frame from '../common/Frame';
@@ -30,14 +31,11 @@ const ReactHookFormMUI = (): JSX.Element => {
         <Controller
           name="iceCreamType"
           control={control}
-          render={({ field }) => <Select
-            {...field}
-            options={[
-              { value: "chocolate", label: "Chocolate" },
-              { value: "strawberry", label: "Strawberry" },
-              { value: "vanilla", label: "Vanilla" }
-            ]}
-          />}
+          render={({ field }) => <Select {...field} >
+            <MenuItem value="chocolate">Chocolate</MenuItem>
+            <MenuItem value="strawberry">Strawberry</MenuItem>
+            <MenuItem value="vanilla">Vanilla</MenuItem>
+          </Select>}
         />
         <input type="submit" />
       </form>

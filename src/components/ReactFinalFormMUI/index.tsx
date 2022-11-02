@@ -1,8 +1,9 @@
 import { Form, Field } from 'react-final-form';
-import Select from 'react-select';
+import Select from '@mui/material/Select';
 
 import Frame from '../common/Frame';
 import cls from './index.module.scss';
+import MenuItem from '@mui/material/MenuItem';
 
 const ReactFinalFormMUI = (): JSX.Element => {
   const onSubmit = (args: any) => {
@@ -29,13 +30,11 @@ const ReactFinalFormMUI = (): JSX.Element => {
             <h2>An Arbitrary Reusable Input Component</h2>
             <div>
               <label>Interests</label>
-              <Field name="interests" component={() => <Select
-                options={[
-                  { value: "chocolate", label: "Chocolate" },
-                  { value: "strawberry", label: "Strawberry" },
-                  { value: "vanilla", label: "Vanilla" }
-                ]}
-              />} />
+              <Field name="interests" component={() => <Select>
+                <MenuItem value="chocolate">Chocolate</MenuItem>
+                <MenuItem value="strawberry">Strawberry</MenuItem>
+                <MenuItem value="vanilla">Vanilla</MenuItem>
+              </Select>} />
             </div>
 
             <h2>Render Function</h2>
