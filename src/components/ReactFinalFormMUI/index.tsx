@@ -19,12 +19,9 @@ const ReactFinalFormMUI = (): JSX.Element => {
       <Form
         onSubmit={onSubmit}
         validate={values => {
-          const errors: { bio?: string, phone?: string } = {};
+          const errors: { bio?: string } = {};
           if (!values.bio) {
             errors.bio = 'Required';
-          }
-          if (!values.phone) {
-            errors.phone = 'Required';
           }
           return errors;
         }}
@@ -68,7 +65,11 @@ const ReactFinalFormMUI = (): JSX.Element => {
             <Typography variant="subtitle1" component="h2">
               Render Function as Children
             </Typography>
-            <Field name="phone">
+            <Field name="phone" validate={value => {
+              if (!value) {
+                return 'Required';
+              }
+            }}>
               {({ input, meta }) => (
                 <Box>
                   <TextField label="Phone" type="text" {...input} placeholder="Phone" />
