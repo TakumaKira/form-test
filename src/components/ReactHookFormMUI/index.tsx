@@ -1,7 +1,8 @@
-import Input from '@mui/material/Input';
+import { useForm, Controller, SubmitHandler } from 'react-hook-form';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 
 import Frame from '../common/Frame';
 import cls from './index.module.scss';
@@ -26,7 +27,7 @@ const ReactHookFormMUI = (): JSX.Element => {
           name="firstName"
           control={control}
           defaultValue=""
-          render={({ field }) => <Input {...field} />}
+          render={({ field }) => <TextField {...field} />}
         />
         <Controller
           name="iceCreamType"
@@ -37,7 +38,7 @@ const ReactHookFormMUI = (): JSX.Element => {
             <MenuItem value="vanilla">Vanilla</MenuItem>
           </Select>}
         />
-        <input type="submit" />
+        <Button type="submit">Submit</Button>
       </form>
     </Frame>
   );
