@@ -27,16 +27,28 @@ const ReactHookFormMUI = (): JSX.Element => {
           name="firstName"
           control={control}
           defaultValue=""
-          render={({ field }) => <TextField {...field} />}
+          render={({ field }) =>
+            <TextField label="First Name" {...field} />
+          }
+        />
+        <Controller
+          name="lastName"
+          control={control}
+          defaultValue=""
+          render={({ field }) =>
+            <TextField label="Last Name" {...field} />
+          }
         />
         <Controller
           name="iceCreamType"
           control={control}
-          render={({ field }) => <Select {...field} >
-            <MenuItem value="chocolate">Chocolate</MenuItem>
-            <MenuItem value="strawberry">Strawberry</MenuItem>
-            <MenuItem value="vanilla">Vanilla</MenuItem>
-          </Select>}
+          render={({ field }) =>
+            <Select label="Ice Cream Type" {...field}>
+              <MenuItem value="chocolate">Chocolate</MenuItem>
+              <MenuItem value="strawberry">Strawberry</MenuItem>
+              <MenuItem value="vanilla">Vanilla</MenuItem>
+            </Select>
+          }
         />
         <Button type="submit">Submit</Button>
       </form>

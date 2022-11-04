@@ -1,5 +1,7 @@
 import { Formik, useFormik } from 'formik';
 import Button from '@mui/material/Button';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import * as Yup from 'yup';
@@ -22,7 +24,7 @@ const FormikMUI = (): JSX.Element => {
     initialValues: {
       firstName: '',
       lastName: '',
-      email: '',
+      iceCreamType: '',
     },
     validationSchema: Yup.object({
       firstName: Yup.string()
@@ -31,7 +33,8 @@ const FormikMUI = (): JSX.Element => {
       lastName: Yup.string()
         .max(20, 'Must be 20 characters or less')
         .required('Required'),
-      email: Yup.string().email('Invalid email address').required('Required'),
+      iceCreamType: Yup.string()
+        .required('Required'),
     }),
     onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
@@ -53,6 +56,7 @@ const FormikMUI = (): JSX.Element => {
           <TextField
             type="text"
             name="firstName"
+            label="First Name"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.firstName}
@@ -65,6 +69,7 @@ const FormikMUI = (): JSX.Element => {
           <TextField
             type="text"
             name="lastName"
+            label="Last Name"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.lastName}
@@ -74,16 +79,20 @@ const FormikMUI = (): JSX.Element => {
               {errors.lastName && touched.lastName && errors.lastName}
             </Typography>
           }
-          <TextField
-            type="email"
-            name="email"
+          <Select
+            name="iceCreamType"
+            label="Ice Cream Type"
             onChange={handleChange}
             onBlur={handleBlur}
-            value={values.email}
-          />
-          {(errors.email || touched.email || errors.email) &&
+            value={values.iceCreamType}
+          >
+            <MenuItem value="chocolate">Chocolate</MenuItem>
+            <MenuItem value="strawberry">Strawberry</MenuItem>
+            <MenuItem value="vanilla">Vanilla</MenuItem>
+          </Select>
+          {(errors.iceCreamType || touched.iceCreamType || errors.iceCreamType) &&
             <Typography>
-              {errors.email && touched.email && errors.email}
+              {errors.iceCreamType && touched.iceCreamType && errors.iceCreamType}
             </Typography>
           }
           <Button type="submit" disabled={isSubmitting}>
