@@ -14,17 +14,18 @@ const Input = (props: {field: FieldInputProps<string>, form: FormikProps<any>, i
   return <TextField {...field} {...inputProps} />
 }
 
+const schema = Yup.object().shape({
+  firstName: Yup.string()
+    .max(15, 'Must be 15 characters or less')
+    .required('Required'),
+  lastName: Yup.string()
+    .max(20, 'Must be 20 characters or less')
+    .required('Required'),
+  iceCreamType: Yup.string()
+    .required('Required'),
+});
+
 const FormikCompMUI = (): JSX.Element => {
-  const schema = Yup.object().shape({
-    firstName: Yup.string()
-      .max(15, 'Must be 15 characters or less')
-      .required('Required'),
-    lastName: Yup.string()
-      .max(20, 'Must be 20 characters or less')
-      .required('Required'),
-    iceCreamType: Yup.string()
-      .required('Required'),
-  });
 
   return (
     <Frame title="<form> 制御: Formik / UI: Formik + MUI">
@@ -32,10 +33,8 @@ const FormikCompMUI = (): JSX.Element => {
         initialValues={{ firstName: '', lastName: '', iceCreamType: '' }}
         validationSchema={schema}
         onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
+          console.log(values)
+          setSubmitting(false);
         }}
       >
         {({ isSubmitting }) => {
