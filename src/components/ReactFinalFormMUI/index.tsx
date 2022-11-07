@@ -2,6 +2,7 @@ import { Form, Field, FieldRenderProps } from 'react-final-form';
 import { setIn } from 'final-form';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
+import Grid from '@mui/material/Grid';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -14,10 +15,16 @@ import cls from './index.module.scss';
 
 const Input = (label: string) => (props: FieldRenderProps<any, HTMLElement, any>) => {
   const {input, meta} = props
-  return (<>
-    <TextField label={label} {...input} />
-    {meta.touched && meta.error && <Typography>{meta.error}</Typography>}
-  </>)
+  return (
+    <>
+      <TextField label={label} sx={{width: 1}} {...input} />
+      {meta.touched && meta.error &&
+        <Typography variant="body2" sx={{color: 'red'}}>
+          {meta.error}
+        </Typography>
+      }
+    </>
+  )
 }
 const FirstNameInput = Input('First Name')
 
@@ -56,35 +63,56 @@ const ReactFinalFormMUI = (): JSX.Element => {
         validate={validate}
         render={({ handleSubmit }) =>
           <form onSubmit={handleSubmit}>
-            <Field name="firstName" component={FirstNameInput} />
-            <Field
-              name="lastName"
-              render={({ input, meta }) =>
-                <>
-                  <TextField label="Last Name" {...input} />
-                  {meta.touched && meta.error && <Typography>{meta.error}</Typography>}
-                </>
-              }
-              validate={value => {
-                if (value === 'test') {
-                  return 'test is not allowed';
-                }
-              }}
-            />
-            <Field name="iceCreamType">
-              {({ input, meta }) =>
-                <FormControl sx={{ minWidth: 160 }}>
-                  <InputLabel id="iceCreamTypeLabel">Ice Cream Type</InputLabel>
-                  <Select labelId="iceCreamTypeLabel" label="Ice Cream Type" {...input}>
-                    <MenuItem value="chocolate">Chocolate</MenuItem>
-                    <MenuItem value="strawberry">Strawberry</MenuItem>
-                    <MenuItem value="vanilla">Vanilla</MenuItem>
-                  </Select>
-                  {meta.touched && meta.error && <Typography>{meta.error}</Typography>}
-                </FormControl>
-              }
-            </Field>
-            <Button type="submit">Submit</Button>
+            <Grid container spacing={2}>
+              <Grid item xs={6}>
+                <Field name="firstName" component={FirstNameInput} />
+              </Grid>
+              <Grid item xs={6}>
+                <Field
+                  name="lastName"
+                  render={({ input, meta }) =>
+                    <>
+                      <TextField label="Last Name" sx={{width: 1}} {...input} />
+                      {meta.touched && meta.error &&
+                        <Typography variant="body2" sx={{color: 'red'}}>
+                          {meta.error}
+                        </Typography>
+                      }
+                    </>
+                  }
+                  validate={value => {
+                    if (value === 'test') {
+                      return 'test is not allowed';
+                    }
+                  }}
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <Field name="iceCreamType">
+                  {({ input, meta }) =>
+                    <>
+                      <FormControl sx={{ width: 1 }}>
+                        <InputLabel id="iceCreamTypeLabel">Ice Cream Type</InputLabel>
+                        <Select labelId="iceCreamTypeLabel" label="Ice Cream Type" {...input}>
+                          <MenuItem value="chocolate">Chocolate</MenuItem>
+                          <MenuItem value="strawberry">Strawberry</MenuItem>
+                          <MenuItem value="vanilla">Vanilla</MenuItem>
+                        </Select>
+                      </FormControl>
+                      {meta.touched && meta.error &&
+                        <Typography variant="body2" sx={{color: 'red'}}>
+                          {meta.error}
+                        </Typography>
+                      }
+                    </>
+                  }
+                </Field>
+              </Grid>
+              <Grid item xs={6} />
+              <Grid item>
+                <Button type="submit">Submit</Button>
+              </Grid>
+            </Grid>
           </form>
         }
       />

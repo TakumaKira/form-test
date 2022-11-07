@@ -1,6 +1,7 @@
 import { Formik, useFormik } from 'formik';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
+import Grid from '@mui/material/Grid';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -53,55 +54,68 @@ const FormikMUI = (): JSX.Element => {
         }}
       >
         <form onSubmit={handleSubmit}>
-          <TextField
-            type="text"
-            name="firstName"
-            label="First Name"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.firstName}
-          />
-          {(errors.firstName || touched.firstName || errors.firstName) &&
-            <Typography>
-              {errors.firstName && touched.firstName && errors.firstName}
-            </Typography>
-          }
-          <TextField
-            type="text"
-            name="lastName"
-            label="Last Name"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.lastName}
-          />
-          {(errors.lastName || touched.lastName || errors.lastName) &&
-            <Typography>
-              {errors.lastName && touched.lastName && errors.lastName}
-            </Typography>
-          }
-          <FormControl sx={{ minWidth: 160 }}>
-            <InputLabel id="iceCreamTypeLabel">Ice Cream Type</InputLabel>
-            <Select
-              name="iceCreamType"
-              labelId="iceCreamTypeLabel"
-              label="Ice Cream Type"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.iceCreamType}
-            >
-              <MenuItem value="chocolate">Chocolate</MenuItem>
-              <MenuItem value="strawberry">Strawberry</MenuItem>
-              <MenuItem value="vanilla">Vanilla</MenuItem>
-            </Select>
-          </FormControl>
-          {(errors.iceCreamType || touched.iceCreamType || errors.iceCreamType) &&
-            <Typography>
-              {errors.iceCreamType && touched.iceCreamType && errors.iceCreamType}
-            </Typography>
-          }
-          <Button type="submit" disabled={isSubmitting}>
-            Submit
-          </Button>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <TextField
+                type="text"
+                name="firstName"
+                label="First Name"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.firstName}
+                sx={{ width: 1 }}
+              />
+              {(errors.firstName || touched.firstName || errors.firstName) &&
+                <Typography variant="body2" sx={{color: 'red'}}>
+                  {errors.firstName && touched.firstName && errors.firstName}
+                </Typography>
+              }
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                type="text"
+                name="lastName"
+                label="Last Name"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.lastName}
+                sx={{ width: 1 }}
+              />
+              {(errors.lastName || touched.lastName || errors.lastName) &&
+                <Typography variant="body2" sx={{color: 'red'}}>
+                  {errors.lastName && touched.lastName && errors.lastName}
+                </Typography>
+              }
+            </Grid>
+            <Grid item xs={6}>
+              <FormControl sx={{ width: 1 }}>
+                <InputLabel id="iceCreamTypeLabel">Ice Cream Type</InputLabel>
+                <Select
+                  name="iceCreamType"
+                  labelId="iceCreamTypeLabel"
+                  label="Ice Cream Type"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.iceCreamType}
+                >
+                  <MenuItem value="chocolate">Chocolate</MenuItem>
+                  <MenuItem value="strawberry">Strawberry</MenuItem>
+                  <MenuItem value="vanilla">Vanilla</MenuItem>
+                </Select>
+              </FormControl>
+              {(errors.iceCreamType || touched.iceCreamType || errors.iceCreamType) &&
+                <Typography variant="body2" sx={{color: 'red'}}>
+                  {errors.iceCreamType && touched.iceCreamType && errors.iceCreamType}
+                </Typography>
+              }
+            </Grid>
+            <Grid item xs={6} />
+            <Grid item>
+              <Button type="submit" disabled={isSubmitting}>
+                Submit
+              </Button>
+            </Grid>
+          </Grid>
         </form>
       </Formik>
     </Frame>
