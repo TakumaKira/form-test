@@ -1,9 +1,11 @@
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import * as Yup from 'yup';
 
@@ -45,9 +47,11 @@ const ReactHookFormMUI = (): JSX.Element => {
           render={({ field }) =>
             <>
               <TextField label="First Name" {...field} />
-              <Typography>
-                {errors.firstName?.message}
-              </Typography>
+              {errors.firstName &&
+                <Typography>
+                  {errors.firstName.message}
+                </Typography>
+              }
             </>
           }
         />
@@ -58,9 +62,11 @@ const ReactHookFormMUI = (): JSX.Element => {
           render={({ field }) =>
             <>
               <TextField label="Last Name" {...field} />
-              <Typography>
-                {errors.lastName?.message}
-              </Typography>
+              {errors.lastName &&
+                <Typography>
+                  {errors.lastName.message}
+                </Typography>
+              }
             </>
           }
         />
@@ -68,16 +74,19 @@ const ReactHookFormMUI = (): JSX.Element => {
           name="iceCreamType"
           control={control}
           render={({ field }) =>
-            <>
-              <Select label="Ice Cream Type" {...field}>
+            <FormControl>
+              <InputLabel id="iceCreamTypeLabel">Ice Cream Type</InputLabel>
+              <Select labelId="iceCreamTypeLabel" label="Ice Cream Type" {...field}>
                 <MenuItem value="chocolate">Chocolate</MenuItem>
                 <MenuItem value="strawberry">Strawberry</MenuItem>
                 <MenuItem value="vanilla">Vanilla</MenuItem>
               </Select>
-              <Typography>
-                {errors.iceCreamType?.message}
-              </Typography>
-            </>
+              {errors.iceCreamType &&
+                <Typography>
+                  {errors.iceCreamType.message}
+                </Typography>
+              }
+            </FormControl>
           }
         />
         <Button type="submit">Submit</Button>

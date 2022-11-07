@@ -1,6 +1,8 @@
 import { Form, Field, FieldRenderProps } from 'react-final-form';
 import { setIn } from 'final-form';
 import Button from '@mui/material/Button';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
@@ -71,14 +73,15 @@ const ReactFinalFormMUI = (): JSX.Element => {
             />
             <Field name="iceCreamType">
               {({ input, meta }) =>
-                <>
-                  <Select {...input}>
+                <FormControl>
+                  <InputLabel id="iceCreamTypeLabel">Ice Cream Type</InputLabel>
+                  <Select labelId="iceCreamTypeLabel" label="Ice Cream Type" {...input}>
                     <MenuItem value="chocolate">Chocolate</MenuItem>
                     <MenuItem value="strawberry">Strawberry</MenuItem>
                     <MenuItem value="vanilla">Vanilla</MenuItem>
                   </Select>
                   {meta.touched && meta.error && <Typography>{meta.error}</Typography>}
-                </>
+                </FormControl>
               }
             </Field>
             <Button type="submit">Submit</Button>

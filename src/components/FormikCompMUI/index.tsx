@@ -1,5 +1,7 @@
 import { Formik, Form, Field, ErrorMessage, FormikProps, FieldInputProps, FieldMetaProps } from 'formik';
 import Button from '@mui/material/Button';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
@@ -50,11 +52,14 @@ const FormikCompMUI = (): JSX.Element => {
               <ErrorMessage name="lastName" component={Typography} />
               <Field name="iceCreamType">
                 {({ field, form, meta }: { field: FieldInputProps<string>, form: FormikProps<any>, meta: FieldMetaProps<string> }) =>
-                  <Select label="Ice Cream Type" {...field}>
-                    <MenuItem value="chocolate">Chocolate</MenuItem>
-                    <MenuItem value="strawberry">Strawberry</MenuItem>
-                    <MenuItem value="vanilla">Vanilla</MenuItem>
-                  </Select>
+                  <FormControl>
+                    <InputLabel id="iceCreamTypeLabel">Ice Cream Type</InputLabel>
+                    <Select labelId="iceCreamTypeLabel" label="Ice Cream Type" {...field}>
+                      <MenuItem value="chocolate">Chocolate</MenuItem>
+                      <MenuItem value="strawberry">Strawberry</MenuItem>
+                      <MenuItem value="vanilla">Vanilla</MenuItem>
+                    </Select>
+                  </FormControl>
                 }
               </Field>
               <ErrorMessage name="iceCreamType" component={Typography} />

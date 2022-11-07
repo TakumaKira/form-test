@@ -1,5 +1,7 @@
 import { Formik, useFormik } from 'formik';
 import Button from '@mui/material/Button';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
@@ -77,17 +79,21 @@ const FormikMUI = (): JSX.Element => {
               {errors.lastName && touched.lastName && errors.lastName}
             </Typography>
           }
-          <Select
-            name="iceCreamType"
-            label="Ice Cream Type"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.iceCreamType}
-          >
-            <MenuItem value="chocolate">Chocolate</MenuItem>
-            <MenuItem value="strawberry">Strawberry</MenuItem>
-            <MenuItem value="vanilla">Vanilla</MenuItem>
-          </Select>
+          <FormControl>
+            <InputLabel id="iceCreamTypeLabel">Ice Cream Type</InputLabel>
+            <Select
+              name="iceCreamType"
+              labelId="iceCreamTypeLabel"
+              label="Ice Cream Type"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.iceCreamType}
+            >
+              <MenuItem value="chocolate">Chocolate</MenuItem>
+              <MenuItem value="strawberry">Strawberry</MenuItem>
+              <MenuItem value="vanilla">Vanilla</MenuItem>
+            </Select>
+          </FormControl>
           {(errors.iceCreamType || touched.iceCreamType || errors.iceCreamType) &&
             <Typography>
               {errors.iceCreamType && touched.iceCreamType && errors.iceCreamType}
