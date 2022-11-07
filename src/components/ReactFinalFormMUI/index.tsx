@@ -73,7 +73,7 @@ const ReactFinalFormMUI = (): JSX.Element => {
             />
             <Field name="iceCreamType">
               {({ input, meta }) =>
-                <FormControl>
+                <FormControl sx={{ minWidth: 160 }}>
                   <InputLabel id="iceCreamTypeLabel">Ice Cream Type</InputLabel>
                   <Select labelId="iceCreamTypeLabel" label="Ice Cream Type" {...input}>
                     <MenuItem value="chocolate">Chocolate</MenuItem>

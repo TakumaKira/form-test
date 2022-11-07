@@ -79,7 +79,7 @@ const FormikMUI = (): JSX.Element => {
               {errors.lastName && touched.lastName && errors.lastName}
             </Typography>
           }
-          <FormControl>
+          <FormControl sx={{ minWidth: 160 }}>
             <InputLabel id="iceCreamTypeLabel">Ice Cream Type</InputLabel>
             <Select
               name="iceCreamType"

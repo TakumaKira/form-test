@@ -52,7 +52,7 @@ const FormikCompMUI = (): JSX.Element => {
               <ErrorMessage name="lastName" component={Typography} />
               <Field name="iceCreamType">
                 {({ field, form, meta }: { field: FieldInputProps<string>, form: FormikProps<any>, meta: FieldMetaProps<string> }) =>
-                  <FormControl>
+                  <FormControl sx={{ minWidth: 160 }}>
                     <InputLabel id="iceCreamTypeLabel">Ice Cream Type</InputLabel>
                     <Select labelId="iceCreamTypeLabel" label="Ice Cream Type" {...field}>
                       <MenuItem value="chocolate">Chocolate</MenuItem>

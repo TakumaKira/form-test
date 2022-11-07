@@ -74,7 +74,7 @@ const ReactHookFormMUI = (): JSX.Element => {
           name="iceCreamType"
           control={control}
           render={({ field }) =>
-            <FormControl>
+            <FormControl sx={{ minWidth: 160 }}>
               <InputLabel id="iceCreamTypeLabel">Ice Cream Type</InputLabel>
               <Select labelId="iceCreamTypeLabel" label="Ice Cream Type" {...field}>
                 <MenuItem value="chocolate">Chocolate</MenuItem>
