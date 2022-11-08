@@ -1,7 +1,6 @@
 import { DataGrid } from '@mui/x-data-grid';
 
 import Frame from '../common/Frame';
-import cls from './index.module.scss';
 
 const DataGridMUI = (): JSX.Element => {
   const columns = [
